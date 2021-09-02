@@ -1,0 +1,13 @@
+name: 'Checkout the whole repository'
+description: 'Checkout all commits, all tags, and initialize all submodules.'
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        submodules: recursive
+    - name: Fetch tags
+      shell: bash
+      run: git fetch --tags -f
