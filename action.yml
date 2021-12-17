@@ -2,29 +2,20 @@ name: 'Checkout the whole repository'
 description: 'Checkout all commits, all tags, and initialize all submodules.'
 inputs:
   token:
-    description: A custom token. If not provided or empty, uses the default token
+    description: The token to use when checking out the repository
     required: false
     default: ''
 
 runs:
   using: "composite"
   steps:
-    - name: Select token
-      id: token
-      shell: bash
-      run: |
-        if [ -z "${{ inputs.token }}" ]; then
-          echo '::set-output name=TOKEN::${{ inputs.token }}'
-        else
-          echo '::set-output name=TOKEN::${{ secrets.GITHUB_TOKEN }}'
-        fi
     - name: Checkout with default token
       uses: actions/checkout@v2.4.0
       if: 
       with:
         fetch-depth: 0
         submodules: recursive
-        token: ${{ steps.token.outputs.TOKEN }}
+        token: ${{ inputs.token }}
     - name: Fetch tags
       shell: bash
       run: git fetch --tags -f
