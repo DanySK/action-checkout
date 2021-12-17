@@ -5,7 +5,23 @@ on:
       - 'master'
 
 jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ windows, macos, ubuntu ]
+        token: [ '', '${{ secrets.GITHUB_TOKEN }}' ]
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          path: action
+      - uses: ./action
+        with:
+          token: ${{ matrix.token }}
   release:
+    needs:
+      - test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
