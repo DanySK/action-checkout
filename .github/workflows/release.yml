@@ -18,7 +18,7 @@ jobs:
           path: action
       - name: move the action outside the workspace
         shell: bash
-        run: sudo mv action ..
+        run: mv action ..
       - name: Test with custom token
         uses: ./../action
         if: matrix.custom_token
