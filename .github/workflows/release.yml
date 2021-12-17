@@ -18,12 +18,12 @@ jobs:
           path: action
       - name: Test with custom token
         uses: ./action
-        if: matrix.custom_token == 'true'
+        if: matrix.custom_token
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Test with default token
         uses: ./action
-        if: matrix.custom_token == 'false'
+        if: ${{ !matrix.custom_token }}
   release:
     needs:
       - test
