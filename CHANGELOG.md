@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/DanySK/action-checkout/compare/0.2.0...0.2.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* update the README file ([a47a627](https://github.com/DanySK/action-checkout/commit/a47a62753d38482cbdd035f599852edd6c93f981))
+
 # [0.2.0](https://github.com/DanySK/action-checkout/compare/0.1.0...0.2.0) (2021-12-17)
 
 
