@@ -1,0 +1,17 @@
+name: Release
+on:
+  push:
+    branches:
+      - 'master'
+
+runs-on: ubuntu-latest
+    if: >-
+      contains('push workflow_dispatch', github.event_name)
+      && contains(github.repository, 'AlchemistSimulator/Alchemist')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Release
+        run: |
+          npm install
+          npx semantic-release
