@@ -9,13 +9,19 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout with default token
+    - name: Checkout with custom token
       uses: actions/checkout@v2.4.0
-      if: 
+      if: inputs.token != ''
       with:
         fetch-depth: 0
         submodules: recursive
         token: ${{ inputs.token }}
+    - name: Checkout with default token
+      uses: actions/checkout@v2.4.0
+      if: inputs.token == ''
+      with:
+        fetch-depth: 0
+        submodules: recursive
     - name: Fetch tags
       shell: bash
       run: git fetch --tags -f
