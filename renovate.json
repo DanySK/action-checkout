@@ -5,7 +5,7 @@
   ],
   "packageRules": [
     {
-      "description": "Updates action.yml should trigger new releases",
+      "description": "Updates to action.yml should trigger new releases",
       "matchPaths": ["action.yml"],
       "semanticCommitType": "fix"
     }
